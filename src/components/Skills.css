@@ -1,0 +1,208 @@
+/* ══════════════════════════════════════════════
+   🖤 RETRO-MINIMAL SKILLS
+   ══════════════════════════════════════════════ */
+
+.skills-section {
+  position: relative;
+}
+
+.skills-container-minimal {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── CATEGORY GROUP ── */
+.skills-category-group {
+  /* No extra styling needed */
+}
+
+.skills-category-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.title-letter {
+  display: inline;
+}
+
+/* ── SKILLS GRID (STATIC) ── */
+.skills-grid-minimal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+/* ── MARQUEE CONTAINER ── */
+.skills-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+  /* Premium edge fading */
+  mask-image: linear-gradient(to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent);
+}
+
+.skills-marquee-content {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Pause on hover for accessibility and engagement */
+.skills-marquee-wrapper:hover .skills-marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+
+  /* Since we duplicated it 3 times */
+}
+
+/* ── SKILL ITEM ── */
+.skill-item-compact {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 0;
+  transition: all 0.2s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  contain: content;
+}
+
+.skill-item-compact:hover {
+  border-color: var(--accent);
+  background: var(--surface2);
+  transform: translateY(-4px) scale(1.02);
+  z-index: 2;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* ── SKILL ICON ── */
+.skill-icon-circle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-circle-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--skill-color) 0%, transparent 70%);
+  opacity: 0.05;
+  filter: blur(8px);
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.skill-item-compact:hover .skill-circle-glow {
+  opacity: 0.3;
+  filter: blur(12px);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.skill-svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 5px rgba(var(--skill-color), 0.2));
+}
+
+.skill-item-compact:hover .skill-svg-wrapper {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 15px var(--skill-color));
+}
+
+.skill-name-compact {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.skill-item-compact:hover .skill-name-compact {
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .skills-container-minimal {
+    gap: 32px;
+  }
+
+  .skills-grid-minimal {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 6px;
+  }
+
+  .skill-item-compact {
+    width: 100px;
+    padding: 10px 6px;
+    gap: 6px;
+  }
+
+  .skill-icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill-name-compact {
+    font-size: 0.55rem;
+  }
+
+  .skills-category-title {
+    font-size: 0.65rem;
+    margin-bottom: 14px;
+  }
+
+  .skills-marquee-content {
+    gap: 6px;
+  }
+}

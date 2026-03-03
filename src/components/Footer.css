@@ -1,0 +1,157 @@
+/* ══════════════════════════════════════════════
+   🖤 RETRO-MINIMAL FOOTER
+   ══════════════════════════════════════════════ */
+
+.footer {
+  position: relative;
+  padding: 0;
+  background: transparent;
+}
+
+.footer-top-line {
+  height: 1px;
+  background: var(--border);
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 2rem;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ── BRAND ── */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-bracket {
+  color: var(--text-dim);
+}
+
+.footer-tagline {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  max-width: 280px;
+}
+
+/* ── NAV ── */
+.footer-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+/* ── SOCIALS ── */
+.footer-socials {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text-dim);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── BOTTOM ── */
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.bright-glow-name {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.footer-made {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .footer-nav {
+    justify-content: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-tagline {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 30px 1rem;
+  }
+}

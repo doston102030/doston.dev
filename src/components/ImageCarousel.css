@@ -1,0 +1,159 @@
+/* ── SHARED KARUSEL STYLES ── */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    /* Restored for desktop premium feel */
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Padding-bottom hack for reliable 3:4 aspect ratio */
+.carousel-track-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 133.33%;
+    /* 3:4 Ratio */
+}
+
+.carousel-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Back to cover for desktop for immersive look */
+    display: block;
+}
+
+/* ── PREMIUM BUTTONS ── */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    opacity: 0;
+}
+
+.carousel-wrapper:hover .carousel-btn {
+    opacity: 1;
+    background: rgba(10, 10, 10, 0.2);
+}
+
+.carousel-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(10, 10, 10, 0.5) !important;
+}
+
+.carousel-btn-prev {
+    left: 10px;
+}
+
+.carousel-btn-next {
+    right: 10px;
+}
+
+/* ── DOTS ── */
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    transform: scale(1.2);
+}
+
+/* ── COUNTER ── */
+.carousel-counter {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .carousel-wrapper {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-wrapper {
+        max-width: 200px;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        opacity: 1;
+        background: rgba(10, 10, 10, 0.3);
+    }
+
+    .carousel-image {
+        object-fit: contain;
+        /* Stick to contain on mobile as per user's preference for certificates */
+        background: var(--surface);
+    }
+}
