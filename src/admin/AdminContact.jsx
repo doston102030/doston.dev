@@ -21,10 +21,33 @@ export default function AdminContact() {
         }).catch(() => { });
     }, []);
 
+    const normalizeUrl = (url, key) => {
+        if (!url) return '';
+        let normalized = url.trim();
+        if (normalized.startsWith('http://') || normalized.startsWith('https://') || normalized.startsWith('mailto:') || normalized.startsWith('tel:')) {
+            return normalized;
+        }
+        if (key === 'telegram' && normalized.startsWith('@')) {
+            return `https://t.me/${normalized.substring(1)}`;
+        }
+        if (key === 'telegram' && !normalized.includes('/')) {
+            return `https://t.me/${normalized}`;
+        }
+        if (key === 'email') return `mailto:${normalized}`;
+        if (key === 'phone') return normalized; // Phone usually handled separately
+        return `https://${normalized}`;
+    };
+
     const handleSave = async () => {
         setSaving(true);
+        const normalizedData = { ...data };
+        ['telegram', 'instagram', 'linkedin', 'github'].forEach(key => {
+            normalizedData[key] = normalizeUrl(normalizedData[key], key);
+        });
+
         try {
-            await setDoc(doc(db, 'portfolio', 'contact'), data);
+            await setDoc(doc(db, 'portfolio', 'contact'), normalizedData);
+            setData(normalizedData);
             setToast('Saqlandi! ✅');
             setTimeout(() => setToast(''), 2500);
         } catch (err) {

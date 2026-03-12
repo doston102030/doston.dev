@@ -45,6 +45,17 @@ export default function Footer() {
     ([key]) => socials[key]
   );
 
+  const formatLink = (url, key) => {
+    if (!url) return '#';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('mailto:') || url.startsWith('tel:')) {
+      return url;
+    }
+    if (key === 'telegram' && url.startsWith('@')) {
+      return `https://t.me/${url.substring(1)}`;
+    }
+    return `https://${url}`;
+  };
+
   return (
     <footer className="relative p-0 bg-transparent">
       {/* Top line */}
@@ -73,7 +84,7 @@ export default function Footer() {
         <div className="flex gap-2 md:justify-center">
           {activeSocials.length > 0
             ? activeSocials.map(([key, meta]) => (
-              <a key={key} href={socials[key]} target="_blank" rel="noreferrer" className="w-9 h-9 flex items-center justify-center border border-border rounded-sm text-text-dim no-underline transition-all duration-300 hover:border-accent hover:text-accent" title={meta.name}>
+              <a key={key} href={formatLink(socials[key], key)} target="_blank" rel="noreferrer" className="w-9 h-9 flex items-center justify-center border border-border rounded-sm text-text-dim no-underline transition-all duration-300 hover:border-accent hover:text-accent" title={meta.name}>
                 {meta.icon}
               </a>
             ))

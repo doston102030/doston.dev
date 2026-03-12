@@ -65,10 +65,31 @@ export default function AdminSocials() {
         }).catch(() => { });
     }, []);
 
+    const normalizeUrl = (url, key) => {
+        if (!url) return '';
+        let normalized = url.trim();
+        if (normalized.startsWith('http://') || normalized.startsWith('https://')) {
+            return normalized;
+        }
+        if (key === 'telegram' && normalized.startsWith('@')) {
+            return `https://t.me/${normalized.substring(1)}`;
+        }
+        if (key === 'telegram' && !normalized.includes('/')) {
+            return `https://t.me/${normalized}`;
+        }
+        return `https://${normalized}`;
+    };
+
     const handleSave = async () => {
         setSaving(true);
+        const normalizedLinks = { ...links };
+        Object.keys(normalizedLinks).forEach(key => {
+            normalizedLinks[key] = normalizeUrl(normalizedLinks[key], key);
+        });
+
         try {
-            await setDoc(doc(db, 'portfolio', 'socials'), links);
+            await setDoc(doc(db, 'portfolio', 'socials'), normalizedLinks);
+            setLinks(normalizedLinks);
             setToast('Saqlandi! ✅');
         } catch (err) {
             setToast('Xatolik: ' + err.message);
