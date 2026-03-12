@@ -48,18 +48,21 @@
 
 @layer base {
   html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     scroll-padding-top: 80px;
     scroll-behavior: smooth;
-    overflow-x: hidden;
   }
 
   body {
     min-width: 320px;
-    min-height: 100vh;
+    min-height: 100%;
     background: var(--bg);
     color: var(--text);
     transition: color 0.3s ease, background-color 0.3s ease;
     overflow-x: hidden;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     position: relative;
     width: 100%;

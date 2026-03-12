@@ -59,7 +59,6 @@ const Preloader = () => {
                     // Reset any inline styles that might block scroll
                     document.body.style.overflow = '';
                     document.body.style.position = '';
-                    document.documentElement.style.overflow = '';
                     window.scrollTo(0, 0);
                 }, 1000);
             }, 500);
@@ -72,7 +71,6 @@ const Preloader = () => {
                 document.body.classList.remove('lock-scroll');
                 document.body.style.overflow = '';
                 document.body.style.position = '';
-                document.documentElement.style.overflow = '';
             };
         }
     }, [progress]);
