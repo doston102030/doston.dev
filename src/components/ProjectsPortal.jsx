@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './ProjectsPortal.css';
 
 const AI_TOOLS = [
@@ -106,20 +107,22 @@ const AI_TOOLS = [
 ];
 
 export default function AIToolsPortal({ open, onClose }) {
+    const { t } = useLanguage();
+
     useEffect(() => {
         if (open) {
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('lock-scroll');
         } else {
-            document.body.style.overflow = '';
+            document.body.classList.remove('lock-scroll');
         }
-        return () => { document.body.style.overflow = ''; };
+        return () => { document.body.classList.remove('lock-scroll'); };
     }, [open]);
 
     if (!open) return null;
 
     return (
         <div className="portal-backdrop" onClick={onClose}>
-            <button className="portal-close" onClick={onClose}>✕</button>
+            <button className="portal-close" onClick={onClose} aria-label={t('portal.close')}>✕</button>
 
             <div className="portal-sphere-wrap" onClick={(e) => e.stopPropagation()}>
                 <div className="portal-ring portal-ring--1" />
@@ -128,7 +131,7 @@ export default function AIToolsPortal({ open, onClose }) {
 
                 <div className="portal-sphere">
                     <div className="portal-inner">
-                        <p className="portal-label">🤖 Men ishlatadigan AI toollar</p>
+                        <p className="portal-label">{t('portal.title')}</p>
 
                         <div className="portal-grid portal-grid--ai">
                             {AI_TOOLS.map((tool, i) => (

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import './ImageCarousel.css';
 
 export default function ImageCarousel({ images = [], autoPlay = false, interval = 4000 }) {
@@ -24,6 +24,12 @@ export default function ImageCarousel({ images = [], autoPlay = false, interval 
     const prev = useCallback(() => {
         goTo((current - 1 + slides.length) % slides.length);
     }, [current, slides.length, goTo]);
+
+    useEffect(() => {
+        if (!autoPlay || slides.length <= 1) return;
+        const itv = setInterval(next, interval);
+        return () => clearInterval(itv);
+    }, [autoPlay, interval, next, slides.length]);
 
     const onTouchStart = (e) => {
         touchStartRef.current = e.touches[0].clientX;

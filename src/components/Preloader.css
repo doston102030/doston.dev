@@ -91,7 +91,7 @@
     display: flex;
     gap: 12px;
     font-size: 1rem;
-    color: var(--accent);
+    color: #e0e0e0;
     word-break: break-word;
     overflow-wrap: break-word;
 }
@@ -102,14 +102,14 @@
 }
 
 .prompt {
-    color: var(--accent);
+    color: #e0e0e0;
     opacity: 0.6;
 }
 
 .cursor-blink {
     width: 8px;
     height: 1.2em;
-    background: var(--accent);
+    background: #e0e0e0;
     display: inline-block;
     animation: blink 1s step-end infinite;
 }
@@ -124,7 +124,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: #888888;
     letter-spacing: 0.1em;
 }
 
@@ -138,9 +138,9 @@
 
 .progress-fill {
     height: 100%;
-    background: var(--accent);
+    background: #e0e0e0;
     transition: width 0.1s linear;
-    box-shadow: 0 0 10px var(--accent);
+    box-shadow: 0 0 10px rgba(224, 224, 224, 0.3);
 }
 
 .terminal-footer {
@@ -149,7 +149,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 0.65rem;
-    color: var(--text-dim);
+    color: #666666;
 }
 
 /* ── EXIT SEQUENCE ── */

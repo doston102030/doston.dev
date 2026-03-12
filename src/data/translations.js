@@ -22,8 +22,8 @@ export const translations = {
             tag: 'O‘zim haqimda',
             title: 'Raqamli tajribalar',
             titleGradient: 'yaratish',
-            text1: "Assalomu alaykum, vaqt ajratganingiz uchun rahmat\nMen — Adhamjonov Doston, frontend dasturchiman 👨‍💻\n\nMurakkab muammolarni sodda va intuitiv interfeyslarga aylantirish — mening asosiy kuchli tomonim. Foydalanuvchi tajribasini markazga qo‘ygan holda, tezkor, responsiv va kengaytiriladigan web ilovalar yarataman. Maqsadim — foydalanuvchini jalb qiladigan va real qiymat beradigan mahsulot qurish.",
-            text2: "Toza va strukturali kod, mustahkam arxitektura hamda yuqori performance — ish uslubimning asosi. Har bir loyihada texnik mukammallik bilan birga biznes qiymatini ham hisobga olaman.\n\nSun’iy intellekt vositalaridan samarali foydalanaman, jarayonlarni optimallashtiraman va innovatsion yechimlar ishlab chiqaman. Yangi texnologiyalarni tez o‘rganaman va doimiy rivojlanishga intilaman.\n\nMen uchun loyiha — bu shunchaki kod emas, balki muammoga aniq va strategik yechimdir.",
+            text1: "Assalomu alaykum, vaqt ajratganingiz uchun rahmat\nMen — Adhamjonov Doston, frontend dasturchiman 👨‍💻\n\nMurakkab muammolarni sodda va intuitiv interfeyslarga aylantirish — mening asliy kuchli tomonim. Foydalanuvchi tajribasini markazga qo‘ygan holda, tezkor, responsiv va kengaytiriladigan web ilovalar yarataman. Maqsadim — foydalanuvchini jalb qiladigan va real qiymat beradigan mahsulot qurish.",
+            text2: "Toza va strukturali kod, mustahkam arxitektura hamda yuqori performance — ish uslubimning asosi. Har bir loyihada texnik mukammallik bilan birga biznes qiymatini ham hisobga olaman.\n\nSun’iy intellekt vositalaridan samarali foydalanaman, jarayonlarni optimallashtiraman va innovatsion yechimlar ishlab chiqaman. Yangi texnologiyalarni tez o‘rganaman va doimiy rivojlanishga intilaman.\n\nMen uchun loyiha — bu shunchayi kod emas, balki muammoga aniq va strategik yechimdir.",
             highlights: [
                 { icon: '⚡', title: 'Performance Optimization', desc: 'Core Web Vitals, lazy loading va code splitting orqali tezkor web ilovalar yaratish.' },
                 { icon: '📱', title: 'Responsive & Mobile-First', desc: 'Barcha qurilmalarga mos, pixel-perfect interfeyslar.' },
@@ -84,6 +84,10 @@ export const translations = {
             tagline: 'Kelajakni har bir komponent orqali quramiz.',
             rights: 'Barcha huquqlar himoyalangan.',
             made: 'Toshkentda mehr bilan yaratildi ❤️'
+        },
+        portal: {
+            title: '🤖 Men ishlatadigan AI toollar',
+            close: 'Yopish'
         }
     },
     ru: {
@@ -171,6 +175,10 @@ export const translations = {
             tagline: 'Создаем будущее, компонент за компонентом.',
             rights: 'Все права защищены.',
             made: 'Сделано с любовью в Ташкенте ❤️'
+        },
+        portal: {
+            title: '🤖 AI инструменты, которые я использую',
+            close: 'Закрыть'
         }
     },
     en: {
@@ -258,6 +266,10 @@ export const translations = {
             tagline: 'Building the future, one component at a time.',
             rights: 'All rights reserved.',
             made: 'Made with ❤️ in Tashkent, Uzbekistan'
+        },
+        portal: {
+            title: '🤖 AI tools that I use',
+            close: 'Close'
         }
     }
 };

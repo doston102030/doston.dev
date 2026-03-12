@@ -11,7 +11,6 @@ const Preloader = () => {
 
     useEffect(() => {
         // Lock scroll
-        document.documentElement.classList.add('lock-scroll');
         document.body.classList.add('lock-scroll');
 
         // Typing Effect

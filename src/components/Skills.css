@@ -4,6 +4,7 @@
 
 .skills-section {
   position: relative;
+  overflow-x: hidden;
 }
 
 .skills-container-minimal {
