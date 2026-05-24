@@ -4,6 +4,7 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { RevealItem } from './ScrollReveal';
 import ImageModal from './ui/ImageModal';
+import ImageShatter from './ui/ImageShatter';
 import './Projects.css';
 
 const defaultProjects = [
@@ -113,13 +114,11 @@ export default function Projects() {
   
                     <div className="project-image-preview">
                       {p.imageUrl && !imageErrors[p.id] ? (
-                        <img
+                        <ImageShatter
                           src={p.imageUrl}
                           alt={p.title}
-                          className="project-main-image"
-                          onError={() => setImageErrors(prev => ({ ...prev, [p.id]: true }))}
                           onClick={() => setModalImage({ index: galleryProjects.indexOf(p) })}
-                          style={{ cursor: 'zoom-in' }}
+                          onError={() => setImageErrors(prev => ({ ...prev, [p.id]: true }))}
                         />
                       ) : (
                         <div className="project-emoji-box">

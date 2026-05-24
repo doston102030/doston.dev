@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import ImageModal from './ui/ImageModal';
+import ImageShatter from './ui/ImageShatter';
 import './ImageCarousel.css';
 
 export default function ImageCarousel({ images = [], autoPlay = false, interval = 4000 }) {
@@ -59,13 +60,11 @@ export default function ImageCarousel({ images = [], autoPlay = false, interval 
                             key={i}
                             className={`carousel-slide ${i === current ? 'active' : ''}`}
                         >
-                            <img
+                            <ImageShatter
                                 src={slide.src}
                                 alt={slide.alt || ''}
                                 className="carousel-image"
-                                loading="eager"
                                 onClick={() => setModalImage({ index: i })}
-                                style={{ cursor: 'zoom-in' }}
                             />
                         </div>
                     ))}
