@@ -6,7 +6,9 @@ import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
 import ScrollReveal from './components/ScrollReveal';
 import Hero from './components/Hero';
+import Stats from './components/Stats';
 import About from './components/About';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -26,11 +28,15 @@ function Portfolio() {
       <Navbar />
       <main>
         <Hero onPortalOpen={() => setPortalOpen(true)} />
+        <Stats />
         <ScrollReveal>
           <About />
         </ScrollReveal>
         <ScrollReveal delay={50}>
           <Skills />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Experience />
         </ScrollReveal>
         <ScrollReveal>
           <Projects />

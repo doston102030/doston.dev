@@ -124,6 +124,7 @@ export default function Projects() {
                       ) : (
                         <div className="project-emoji-box">
                           <span className="project-emoji-large">{p.emoji || '🚀'}</span>
+                          <span className="project-emoji-label">{p.title}</span>
                         </div>
                       )}
                       <div className="project-overlay-mask" />
