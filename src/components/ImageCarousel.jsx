@@ -1,9 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import ImageModal from './ui/ImageModal';
 import './ImageCarousel.css';
 
 export default function ImageCarousel({ images = [], autoPlay = false, interval = 4000 }) {
     const [current, setCurrent] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
     const touchStartRef = useRef(0);
 
     const slides = images.length > 0 ? images : [
@@ -59,9 +61,11 @@ export default function ImageCarousel({ images = [], autoPlay = false, interval 
                         >
                             <img
                                 src={slide.src}
-                                alt={slide.alt || `Slide ${i + 1}`}
+                                alt={slide.alt || ''}
                                 className="carousel-image"
                                 loading="eager"
+                                onClick={() => setModalImage({ index: i })}
+                                style={{ cursor: 'zoom-in' }}
                             />
                         </div>
                     ))}
@@ -113,6 +117,14 @@ export default function ImageCarousel({ images = [], autoPlay = false, interval 
                     <span className="carousel-counter-sep">/</span>
                     <span>{String(slides.length).padStart(2, '0')}</span>
                 </div>
+            )}
+
+            {modalImage !== null && (
+                <ImageModal
+                    images={slides}
+                    initialIndex={modalImage?.index || 0}
+                    onClose={() => setModalImage(null)}
+                />
             )}
         </div>
     );

@@ -3,9 +3,9 @@ import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const defaultProjects = [
-    { id: 1, title: 'ShopVibe E-Commerce', description: 'A full-featured e-commerce platform with cart, payment integration, and admin dashboard.', tags: 'React, Next.js, TypeScript, Stripe, Tailwind', demo: '#', github: '#', featured: true, emoji: '🛍️' },
-    { id: 2, title: 'TaskFlow Dashboard', description: 'Project management tool with drag-and-drop boards, team collaboration, and analytics.', tags: 'React, Redux, REST API, Chart.js', demo: '#', github: '#', featured: false, emoji: '📊' },
-    { id: 3, title: 'WeatherApp Pro', description: 'Beautiful weather application with 7-day forecasts and interactive maps.', tags: 'React, TypeScript, OpenWeather API, CSS', demo: '#', github: '#', featured: false, emoji: '🌤️' },
+    { id: 1, title: 'Game Club CRM', description: 'A premium, modern CRM dashboard user interface screenshot with sleek dark theme, vibrant charts, and glassmorphism cards.', tags: 'React, Next.js, Firebase, Chart.js', demo: '#', github: '#', featured: true, emoji: '🎮', imageUrl: '/projects/crm.png' },
+    { id: 2, title: 'E-Commerce Premium', description: 'A premium, modern e-commerce website product page screenshot with high-end furniture, sleek typography, and clean design.', tags: 'React, Stripe, Tailwind, Redux', demo: '#', github: '#', featured: false, emoji: '🛍️', imageUrl: '/projects/ecommerce.png' },
+    { id: 3, title: 'TaskFlow Pro', description: 'A premium, modern task management dashboard user interface screenshot. Kanban boards, progress rings, and team feed.', tags: 'React, TypeScript, DND, Framer', demo: '#', github: '#', featured: false, emoji: '📊', imageUrl: '/projects/tasks.png' },
 ];
 
 export default function AdminProjects() {

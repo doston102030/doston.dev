@@ -3,38 +3,42 @@ import { useLanguage } from '../context/LanguageContext';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { RevealItem } from './ScrollReveal';
+import ImageModal from './ui/ImageModal';
 import './Projects.css';
 
 const defaultProjects = [
   {
     id: 1,
-    title: 'ShopVibe E-Commerce',
-    description: 'A full-featured e-commerce platform with cart, payment integration, and admin dashboard. Real-time inventory management.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Stripe', 'Tailwind'],
+    title: 'Game Club CRM',
+    description: 'A premium, modern CRM dashboard user interface screenshot with sleek dark theme, vibrant charts, and glassmorphism cards.',
+    tags: ['React', 'Next.js', 'Firebase', 'Chart.js'],
     demo: '#',
     github: '#',
     featured: true,
-    emoji: '🛍️',
+    emoji: '🎮',
+    imageUrl: '/projects/crm.png'
   },
   {
     id: 2,
-    title: 'TaskFlow Dashboard',
-    description: 'Project management tool with drag-and-drop boards, team collaboration, and analytics charts.',
-    tags: ['React', 'Redux', 'REST API', 'Chart.js'],
+    title: 'E-Commerce Premium',
+    description: 'A premium, modern e-commerce website product page screenshot with high-end furniture, sleek typography, and clean design.',
+    tags: ['React', 'Stripe', 'Tailwind', 'Redux'],
+    demo: '#',
+    github: '#',
+    featured: false,
+    emoji: '🛍️',
+    imageUrl: '/projects/ecommerce.png'
+  },
+  {
+    id: 3,
+    title: 'TaskFlow Pro',
+    description: 'A premium, modern task management dashboard user interface screenshot. Kanban boards, progress rings, and team feed.',
+    tags: ['React', 'TypeScript', 'DND', 'Framer'],
     demo: '#',
     github: '#',
     featured: false,
     emoji: '📊',
-  },
-  {
-    id: 3,
-    title: 'WeatherApp Pro',
-    description: 'Beautiful weather application with 7-day forecasts, interactive maps, and location-based alerts.',
-    tags: ['React', 'TypeScript', 'OpenWeather API', 'CSS'],
-    demo: '#',
-    github: '#',
-    featured: false,
-    emoji: '🌤️',
+    imageUrl: '/projects/tasks.png'
   },
 ];
 
@@ -43,6 +47,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageErrors, setImageErrors] = useState({});
+  const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     getDoc(doc(db, 'portfolio', 'projects')).then(snap => {
@@ -61,11 +66,22 @@ export default function Projects() {
 
   if (loading) return <section className="section projects-section" id="projects" style={{ minHeight: '400px' }} />;
 
+  const galleryProjects = projects.filter(p => p.imageUrl && !imageErrors[p.id]);
+
   const fixUrl = (url) => {
     if (typeof url !== 'string') return '#';
     // If it's a URL but starts with #, strip it (data issue fix)
     if (url.startsWith('#http')) return url.substring(1);
     return url;
+  };
+
+  const handleMouseMove = (e, id) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--mouse-x', `${x}%`);
+    card.style.setProperty('--mouse-y', `${y}%`);
   };
 
   return (
@@ -90,10 +106,11 @@ export default function Projects() {
               <RevealItem key={p.id} delay={i * 120}>
                 <div
                   className={`project-card ${p.featured ? 'project-card--featured' : ''}`}
+                  onMouseMove={(e) => handleMouseMove(e, p.id)}
                 >
                   <div className="project-card-inner">
                     {p.featured && <div className="featured-badge">⭐ {t('projects.featured')}</div>}
-
+  
                     <div className="project-image-preview">
                       {p.imageUrl && !imageErrors[p.id] ? (
                         <img
@@ -101,6 +118,8 @@ export default function Projects() {
                           alt={p.title}
                           className="project-main-image"
                           onError={() => setImageErrors(prev => ({ ...prev, [p.id]: true }))}
+                          onClick={() => setModalImage({ index: galleryProjects.indexOf(p) })}
+                          style={{ cursor: 'zoom-in' }}
                         />
                       ) : (
                         <div className="project-emoji-box">
@@ -154,6 +173,14 @@ export default function Projects() {
           </div>
         )}
       </div>
+
+      {modalImage !== null && (
+        <ImageModal
+          images={galleryProjects}
+          initialIndex={modalImage?.index || 0}
+          onClose={() => setModalImage(null)}
+        />
+      )}
     </section>
   );
 }
