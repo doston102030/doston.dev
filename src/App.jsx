@@ -16,6 +16,7 @@ import AdminLogin from './admin/AdminLogin';
 import AdminLayout from './admin/AdminLayout';
 import Preloader from './components/Preloader';
 import ProjectsPortal from './components/ProjectsPortal';
+import AccessibilityPanel from './components/AccessibilityPanel';
 import './index.css';
 
 function Portfolio() {
@@ -47,6 +48,7 @@ function Portfolio() {
       </main>
       <BottomNav />
       <ProjectsPortal open={portalOpen} onClose={() => setPortalOpen(false)} />
+      <AccessibilityPanel />
     </div>
   );
 }

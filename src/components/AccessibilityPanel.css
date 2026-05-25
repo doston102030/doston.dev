@@ -1,0 +1,217 @@
+.a11y-wrapper {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  z-index: 9998;
+}
+
+/* ── Toggle Button ── */
+.a11y-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.a11y-toggle:hover,
+.a11y-toggle.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.15);
+}
+
+/* ── Panel ── */
+.a11y-panel {
+  position: absolute;
+  bottom: 54px;
+  left: 0;
+  width: 220px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform-origin: bottom left;
+}
+
+.a11y-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* ── Header ── */
+.a11y-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.a11y-panel-header span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.a11y-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.a11y-close:hover { color: var(--text); }
+
+/* ── Section ── */
+.a11y-section {
+  margin-bottom: 14px;
+}
+
+.a11y-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.a11y-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Buttons ── */
+.a11y-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a11y-btn:hover {
+  border-color: var(--accent);
+}
+
+.a11y-btn.selected {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+}
+
+/* Icon buttons (theme) */
+.icon-btn {
+  width: 40px;
+  height: 36px;
+  color: var(--text-muted);
+}
+.icon-btn.selected { color: var(--accent); }
+
+/* Font buttons */
+.font-btn {
+  flex: 1;
+  height: 36px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.font-btn.selected { color: var(--accent); }
+
+/* Contrast buttons */
+.contrast-btn {
+  width: 40px;
+  height: 36px;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.contrast-normal {
+  background: #4a4a4a;
+  color: #e0e0e0;
+  border-color: transparent;
+}
+.contrast-normal.selected { border-color: var(--accent); }
+
+.contrast-high {
+  background: #1a6bb5;
+  color: #ffffff;
+  border-color: transparent;
+}
+.contrast-high.selected { border-color: var(--accent); }
+
+.contrast-inverted {
+  background: #111;
+  color: #fff;
+  border: 1px solid #555;
+}
+.contrast-inverted.selected { border-color: var(--accent); }
+
+/* ── Reset ── */
+.a11y-reset {
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+.a11y-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── High Contrast Mode ── */
+[data-contrast='high'] {
+  --text: #ffffff;
+  --text-muted: #cccccc;
+  --border: rgba(255,255,255,0.3);
+  --surface: rgba(255,255,255,0.08);
+  --surface2: rgba(255,255,255,0.12);
+}
+
+[data-contrast='inverted'] body {
+  filter: invert(1) hue-rotate(180deg);
+}
+[data-contrast='inverted'] img,
+[data-contrast='inverted'] video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .a11y-wrapper {
+    bottom: 110px;
+    left: 12px;
+  }
+}
