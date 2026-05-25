@@ -14,11 +14,11 @@
   --text: #e0e0e0;
   --text-muted: #777777;
   --text-dim: #444444;
-  --accent: #d4d4d4;
-  --accent2: #aaaaaa;
-  --accent3: #d4d4d4;
-  --accent-rgb: 212, 212, 212;
-  --glow: rgba(212, 212, 212, 0.04);
+  --accent: #00ff88;
+  --accent2: #00cc6a;
+  --accent3: #00ff88;
+  --accent-rgb: 0, 255, 136;
+  --glow: rgba(0, 255, 136, 0.06);
   --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
   --card-shadow-hover: 0 4px 30px rgba(0, 0, 0, 0.5);
 

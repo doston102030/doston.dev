@@ -2,43 +2,20 @@
    🔺 CUSTOM TRIANGLE CURSOR
    ══════════════════════════════════════════════ */
 
-/* Default cursor — outline triangle */
+/* Default cursor — neon green outline triangle */
 * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'%3E%3Cpath d='M4 2L20 14L12 16L8 26L4 2Z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'%3E%3Cpath d='M4 2L20 14L12 16L8 26L4 2Z' fill='none' stroke='%2300ff88' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important;
 }
 
-/* Pointer cursor for clickable elements — filled triangle */
-a,
-a *,
-button,
-button *,
-[role="button"],
-[role="button"] *,
-.lang-item,
-.lang-item *,
-.theme-toggle,
-.theme-toggle *,
-.lang-toggle,
-.lang-toggle *,
-.nav-link,
-.nav-link *,
-.bottom-nav-item,
-.bottom-nav-item *,
-.project-card,
-.project-card *,
-.quick-btn,
-.quick-btn *,
-.premium-link,
-.premium-link *,
-.social-btn,
-.social-btn *,
-.btn-primary,
-.btn-primary *,
-.btn-outline,
-.btn-outline *,
-.btn-minimal,
-.btn-minimal * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'%3E%3Cpath d='M4 2L20 14L12 16L8 26L4 2Z' fill='rgba(255,255,255,0.25)' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, pointer !important;
+/* Pointer cursor — filled neon green triangle */
+a, a *, button, button *, [role="button"], [role="button"] *,
+.lang-item, .lang-item *, .theme-toggle, .theme-toggle *,
+.lang-toggle, .lang-toggle *, .nav-link, .nav-link *,
+.bottom-nav-item, .bottom-nav-item *, .project-card, .project-card *,
+.quick-btn, .quick-btn *, .premium-link, .premium-link *,
+.social-btn, .social-btn *, .btn-primary, .btn-primary *,
+.btn-outline, .btn-outline *, .btn-minimal, .btn-minimal * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'%3E%3Cpath d='M4 2L20 14L12 16L8 26L4 2Z' fill='rgba(0,255,136,0.35)' stroke='%2300ff88' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, pointer !important;
 }
 
 /* ── LIGHT THEME NATIVE CURSOR ── */
@@ -89,31 +66,64 @@ textarea {
 /* ── CUSTOM CURSOR ELEMENTS ── */
 .cursor-dot {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: -3px;
+    left: -3px;
     width: 6px;
     height: 6px;
     background: var(--accent);
     border-radius: 0;
     pointer-events: none;
-    z-index: 10001;
+    z-index: 10002;
     will-change: transform;
-    transition: width 0.3s ease, height 0.3s ease, background 0.2s ease;
+    box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(0, 255, 136, 0.4);
+    transition: width 0.2s ease, height 0.2s ease;
 }
 
 .cursor-dot.hovering {
     width: 10px;
     height: 10px;
+    top: -5px;
+    left: -5px;
+}
+
+.cursor-dot.clicking {
+    transform: scale(0.7) !important;
+}
+
+/* Ring — follows with lerp delay */
+.cursor-ring {
+    position: fixed;
+    top: -18px;
+    left: -18px;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(0, 255, 136, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    will-change: transform;
+    transition: width 0.3s ease, height 0.3s ease,
+                top 0.3s ease, left 0.3s ease,
+                border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.cursor-ring.hovering {
+    width: 54px;
+    height: 54px;
+    top: -27px;
+    left: -27px;
+    border-color: rgba(0, 255, 136, 1);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
 }
 
 .cursor-trail {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: -1.5px;
+    left: -1.5px;
     width: 3px;
     height: 3px;
     background: var(--accent);
-    opacity: calc(0.8 - (var(--i) * 0.1));
+    opacity: calc(0.6 - (var(--i) * 0.08));
     border-radius: 0;
     pointer-events: none;
     z-index: 10000;
@@ -126,11 +136,10 @@ textarea {
     left: -200px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.07) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9999;
     will-change: transform;
-    transition: background 0.3s ease;
 }
 
 /* ── LIGHT THEME OVERRIDES (BLACK CURSOR) ── */
