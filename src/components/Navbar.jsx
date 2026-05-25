@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
+import AccessibilityPanel from './AccessibilityPanel';
 import './Navbar.css';
 
 const Gradients = () => (
@@ -230,6 +231,9 @@ export default function Navbar() {
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
+
+          {/* Accessibility */}
+          <AccessibilityPanel />
         </div>
       </div>
     </header>
