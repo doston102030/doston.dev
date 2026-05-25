@@ -227,11 +227,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Theme Toggle */}
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-
           {/* Accessibility */}
           <AccessibilityPanel />
         </div>

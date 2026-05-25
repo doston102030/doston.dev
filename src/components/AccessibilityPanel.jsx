@@ -86,10 +86,27 @@ export default function AccessibilityPanel() {
         aria-label="Maxsus imkoniyatlar"
         title="Maxsus imkoniyatlar"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="5" r="1.5" fill="currentColor" />
-          <path d="M9 9h6M12 9v11M9 14l-3 6M15 14l3 6" />
-          <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="a11y-icon">
+          <defs>
+            <linearGradient id="a11y-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="1" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.5" />
+            </linearGradient>
+          </defs>
+          {/* Outer orbit ring */}
+          <circle cx="12" cy="12" r="10.5" stroke="url(#a11y-grad)" strokeWidth="0.8" strokeDasharray="3 2" className="a11y-orbit" />
+          {/* Head */}
+          <circle cx="12" cy="5.5" r="2" fill="url(#a11y-grad)" />
+          {/* Body */}
+          <path d="M8.5 10.5h7" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
+          {/* Torso */}
+          <line x1="12" y1="10.5" x2="12" y2="16" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
+          {/* Left leg */}
+          <line x1="12" y1="16" x2="9" y2="20" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
+          {/* Right leg */}
+          <line x1="12" y1="16" x2="15" y2="20" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
+          {/* Inner glow dot */}
+          <circle cx="12" cy="12" r="1" fill="var(--accent)" opacity="0.3" className="a11y-pulse-dot" />
         </svg>
       </button>
 

@@ -22,7 +22,41 @@
 .a11y-toggle.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.05);
+  background: rgba(var(--accent-rgb), 0.08);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.25);
+}
+
+.a11y-icon {
+  transition: transform 0.3s ease;
+}
+.a11y-toggle:hover .a11y-icon {
+  transform: rotate(12deg) scale(1.08);
+}
+.a11y-toggle.active .a11y-icon {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.a11y-orbit {
+  transform-origin: 12px 12px;
+  animation: orbit-spin 8s linear infinite;
+}
+.a11y-toggle:hover .a11y-orbit,
+.a11y-toggle.active .a11y-orbit {
+  animation-duration: 2s;
+}
+
+.a11y-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.2; r: 1; }
+  50%       { opacity: 0.7; r: 2.5; }
 }
 
 /* ── Panel ── */
