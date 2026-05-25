@@ -28,39 +28,35 @@
 
 /* ── Icon Animations ── */
 .a11y-icon {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.a11y-toggle:hover .a11y-icon  { transform: scale(1.1); }
-.a11y-toggle.active .a11y-icon { transform: scale(1.05) rotate(45deg); }
+.a11y-toggle:hover .a11y-icon  { transform: scale(1.12); }
+.a11y-toggle.active .a11y-icon { transform: scale(1.08); }
 
-.a11y-spin-outer {
-  transform-origin: 12px 12px;
-  animation: spin-cw 9s linear infinite;
+.a11y-knob {
+  transition: filter 0.3s ease;
 }
-.a11y-spin-inner {
-  transform-origin: 12px 12px;
-  animation: spin-ccw 6s linear infinite;
-}
-.a11y-toggle:hover .a11y-spin-outer  { animation-duration: 2s; }
-.a11y-toggle:hover .a11y-spin-inner  { animation-duration: 1.2s; }
-.a11y-toggle.active .a11y-spin-outer { animation-duration: 1s; }
-.a11y-toggle.active .a11y-spin-inner { animation-duration: 0.7s; }
-
-.a11y-diamond {
-  animation: diamond-pulse 3s ease-in-out infinite;
-}
-.a11y-dot-t {
-  animation: dot-blink 2s ease-in-out infinite;
+.a11y-toggle:hover .a11y-knob,
+.a11y-toggle.active .a11y-knob {
+  filter: drop-shadow(0 0 3px var(--accent));
 }
 
-@keyframes spin-cw  { to { transform: rotate(360deg); } }
-@keyframes spin-ccw { to { transform: rotate(-360deg); } }
-@keyframes diamond-pulse {
-  0%, 100% { opacity: 0.85; }
-  50%       { opacity: 1; filter: drop-shadow(0 0 3px var(--accent)); }
+.a11y-knob-dot {
+  animation: knob-pulse 2.4s ease-in-out infinite;
 }
-@keyframes dot-blink {
-  0%, 100% { opacity: 0.3; }
+.a11y-knob-dot:nth-of-type(2) { animation-delay: 0.8s; }
+.a11y-knob-dot:nth-of-type(3) { animation-delay: 1.6s; }
+
+.a11y-track1 { animation: track-glow 2.4s ease-in-out infinite; }
+.a11y-track2 { animation: track-glow 2.4s ease-in-out infinite 0.8s; }
+.a11y-track3 { animation: track-glow 2.4s ease-in-out infinite 1.6s; }
+
+@keyframes knob-pulse {
+  0%, 100% { opacity: 0.6; r: 1; }
+  50%       { opacity: 1;   r: 1.4; }
+}
+@keyframes track-glow {
+  0%, 100% { opacity: 0.7; }
   50%       { opacity: 1; }
 }
 

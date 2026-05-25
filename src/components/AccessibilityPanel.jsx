@@ -145,50 +145,34 @@ export default function AccessibilityPanel() {
         aria-label="Maxsus imkoniyatlar"
         title="Maxsus imkoniyatlar"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="a11y-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="a11y-icon">
           <defs>
-            <linearGradient id="pr-g1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--accent)" stopOpacity="1"/>
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.4"/>
+            <linearGradient id="sl-g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.3"/>
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="1"/>
             </linearGradient>
-            <linearGradient id="pr-g2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.8"/>
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.2"/>
-            </linearGradient>
-            <filter id="pr-glow">
-              <feGaussianBlur stdDeviation="0.8" result="blur"/>
-              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
           </defs>
-          {/* Outer spin ring */}
-          <circle cx="12" cy="12" r="10.5"
-            stroke="url(#pr-g1)" strokeWidth="0.6"
-            strokeDasharray="4 2" className="a11y-spin-outer"
-          />
-          {/* Inner spin ring reverse */}
-          <circle cx="12" cy="12" r="7.5"
-            stroke="url(#pr-g2)" strokeWidth="0.5"
-            strokeDasharray="2 3" className="a11y-spin-inner"
-          />
-          {/* Center diamond */}
-          <path
-            d="M12 6.5L15.5 12L12 17.5L8.5 12Z"
-            fill="url(#pr-g1)" opacity="0.9"
-            filter="url(#pr-glow)"
-            className="a11y-diamond"
-          />
-          {/* Diamond inner highlight */}
-          <path d="M12 8.5L14 12L12 15.5L10 12Z" fill="var(--accent)" opacity="0.3"/>
-          {/* Top glow dot */}
-          <circle cx="12" cy="1.5"  r="1.2" fill="var(--accent)" opacity="0.8" className="a11y-dot-t"/>
-          <circle cx="22.5" cy="12" r="1.2" fill="var(--accent)" opacity="0.6"/>
-          <circle cx="12" cy="22.5" r="1.2" fill="var(--accent)" opacity="0.8"/>
-          <circle cx="1.5"  cy="12" r="1.2" fill="var(--accent)" opacity="0.6"/>
-          {/* Cross rays */}
-          <line x1="12" y1="3"  x2="12" y2="6.5"  stroke="var(--accent)" strokeWidth="0.7" opacity="0.5"/>
-          <line x1="21" y1="12" x2="17.5" y2="12" stroke="var(--accent)" strokeWidth="0.7" opacity="0.5"/>
-          <line x1="12" y1="21" x2="12" y2="17.5" stroke="var(--accent)" strokeWidth="0.7" opacity="0.5"/>
-          <line x1="3"  y1="12" x2="6.5"  y2="12" stroke="var(--accent)" strokeWidth="0.7" opacity="0.5"/>
+          {/* Track 1 */}
+          <line x1="2" y1="6"  x2="22" y2="6"  stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" opacity="0.25"/>
+          {/* Track 2 */}
+          <line x1="2" y1="12" x2="22" y2="12" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" opacity="0.25"/>
+          {/* Track 3 */}
+          <line x1="2" y1="18" x2="22" y2="18" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" opacity="0.25"/>
+          {/* Active fill 1 — left side */}
+          <line x1="2" y1="6"  x2="8"  y2="6"  stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" className="a11y-track1"/>
+          {/* Active fill 2 — middle */}
+          <line x1="2" y1="12" x2="15" y2="12" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" className="a11y-track2"/>
+          {/* Active fill 3 — right */}
+          <line x1="2" y1="18" x2="11" y2="18" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" className="a11y-track3"/>
+          {/* Knob 1 */}
+          <circle cx="8"  cy="6"  r="2.8" fill="var(--bg2)"  stroke="var(--accent)" strokeWidth="1.5" className="a11y-knob"/>
+          <circle cx="8"  cy="6"  r="1"   fill="var(--accent)" className="a11y-knob-dot"/>
+          {/* Knob 2 */}
+          <circle cx="15" cy="12" r="2.8" fill="var(--bg2)"  stroke="var(--accent)" strokeWidth="1.5" className="a11y-knob"/>
+          <circle cx="15" cy="12" r="1"   fill="var(--accent)" className="a11y-knob-dot"/>
+          {/* Knob 3 */}
+          <circle cx="11" cy="18" r="2.8" fill="var(--bg2)"  stroke="var(--accent)" strokeWidth="1.5" className="a11y-knob"/>
+          <circle cx="11" cy="18" r="1"   fill="var(--accent)" className="a11y-knob-dot"/>
         </svg>
       </button>
 
