@@ -88,25 +88,42 @@ export default function AccessibilityPanel() {
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="a11y-icon">
           <defs>
-            <linearGradient id="a11y-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--accent)" stopOpacity="1" />
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.5" />
+            <linearGradient id="a11y-g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="1"/>
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.3"/>
             </linearGradient>
+            <filter id="a11y-glow">
+              <feGaussianBlur stdDeviation="0.6" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
           </defs>
-          {/* Outer orbit ring */}
-          <circle cx="12" cy="12" r="10.5" stroke="url(#a11y-grad)" strokeWidth="0.8" strokeDasharray="3 2" className="a11y-orbit" />
-          {/* Head */}
-          <circle cx="12" cy="5.5" r="2" fill="url(#a11y-grad)" />
-          {/* Body */}
-          <path d="M8.5 10.5h7" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Torso */}
-          <line x1="12" y1="10.5" x2="12" y2="16" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Left leg */}
-          <line x1="12" y1="16" x2="9" y2="20" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Right leg */}
-          <line x1="12" y1="16" x2="15" y2="20" stroke="url(#a11y-grad)" strokeWidth="1.8" strokeLinecap="round" />
-          {/* Inner glow dot */}
-          <circle cx="12" cy="12" r="1" fill="var(--accent)" opacity="0.3" className="a11y-pulse-dot" />
+          {/* Hexagon outer */}
+          <path
+            d="M12 1.5L21 6.5V17.5L12 22.5L3 17.5V6.5Z"
+            stroke="url(#a11y-g1)" strokeWidth="0.7" fill="none"
+            strokeDasharray="2.5 1.5" className="a11y-orbit"
+          />
+          {/* Hexagon inner solid */}
+          <path
+            d="M12 4.5L18.5 8.25V15.75L12 19.5L5.5 15.75V8.25Z"
+            stroke="var(--accent)" strokeWidth="0.4" fill="none" opacity="0.25"
+          />
+          {/* Head dot */}
+          <circle cx="12" cy="8" r="1.6" fill="url(#a11y-g1)" filter="url(#a11y-glow)"/>
+          {/* Shoulders bar */}
+          <path d="M9 11.5h6" stroke="url(#a11y-g1)" strokeWidth="1.6" strokeLinecap="round"/>
+          {/* Spine */}
+          <line x1="12" y1="11.5" x2="12" y2="15.5" stroke="url(#a11y-g1)" strokeWidth="1.6" strokeLinecap="round"/>
+          {/* Legs */}
+          <line x1="12" y1="15.5" x2="9.5" y2="18.5" stroke="url(#a11y-g1)" strokeWidth="1.6" strokeLinecap="round"/>
+          <line x1="12" y1="15.5" x2="14.5" y2="18.5" stroke="url(#a11y-g1)" strokeWidth="1.6" strokeLinecap="round"/>
+          {/* Corner nodes */}
+          <circle cx="12" cy="1.5" r="0.8" fill="var(--accent)" opacity="0.7" className="a11y-node"/>
+          <circle cx="21" cy="6.5" r="0.8" fill="var(--accent)" opacity="0.5"/>
+          <circle cx="21" cy="17.5" r="0.8" fill="var(--accent)" opacity="0.5"/>
+          <circle cx="12" cy="22.5" r="0.8" fill="var(--accent)" opacity="0.7"/>
+          <circle cx="3" cy="17.5" r="0.8" fill="var(--accent)" opacity="0.5"/>
+          <circle cx="3" cy="6.5" r="0.8" fill="var(--accent)" opacity="0.5"/>
         </svg>
       </button>
 

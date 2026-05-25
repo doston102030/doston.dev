@@ -27,36 +27,38 @@
 }
 
 .a11y-icon {
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .a11y-toggle:hover .a11y-icon {
-  transform: rotate(12deg) scale(1.08);
+  transform: scale(1.12);
 }
 .a11y-toggle.active .a11y-icon {
-  transform: rotate(-8deg) scale(1.05);
+  transform: scale(1.08) rotate(30deg);
 }
 
 .a11y-orbit {
   transform-origin: 12px 12px;
-  animation: orbit-spin 8s linear infinite;
+  animation: hex-spin 10s linear infinite;
 }
-.a11y-toggle:hover .a11y-orbit,
+.a11y-toggle:hover .a11y-orbit {
+  animation-duration: 2.5s;
+}
 .a11y-toggle.active .a11y-orbit {
-  animation-duration: 2s;
+  animation-duration: 1.5s;
 }
 
-.a11y-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+.a11y-node {
+  animation: node-blink 2s ease-in-out infinite;
 }
 
-@keyframes orbit-spin {
+@keyframes hex-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.2; r: 1; }
-  50%       { opacity: 0.7; r: 2.5; }
+@keyframes node-blink {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
 }
 
 /* ── Panel ── */
