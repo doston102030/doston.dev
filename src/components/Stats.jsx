@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import './Stats.css';
 
-const STATS = [
-  { key: 'exp',          value: 3,   suffix: '+', prefix: '' },
-  { key: 'projects',     value: 20,  suffix: '+', prefix: '' },
-  { key: 'clients',      value: 12,  suffix: '+', prefix: '' },
-  { key: 'satisfaction', value: 100, suffix: '%', prefix: '' },
-];
+function parseStatValue(raw = '') {
+  const num = parseInt(raw.replace(/[^0-9]/g, ''), 10) || 0;
+  const suffix = raw.replace(/[0-9]/g, '');
+  return { num, suffix };
+}
 
 function useCountUp(target, duration = 1800, started = false) {
   const [count, setCount] = useState(0);
@@ -26,10 +26,10 @@ function useCountUp(target, duration = 1800, started = false) {
   return count;
 }
 
-function StatItem({ value, suffix, label, delay }) {
+function StatItem({ num, suffix, label, delay }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
-  const count = useCountUp(value, 1800, visible);
+  const count = useCountUp(num, 1800, visible);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,27 +42,48 @@ function StatItem({ value, suffix, label, delay }) {
 
   return (
     <div className="stat-item" ref={ref} style={{ '--delay': `${delay}ms` }}>
-      <div className="stat-number">
-        {count}{suffix}
-      </div>
+      <div className="stat-number">{count}{suffix}</div>
       <div className="stat-label">{label}</div>
       <div className="stat-line" />
     </div>
   );
 }
 
+const FALLBACK = [
+  { num: 3,   suffix: '+', label: 'Yillik tajriba' },
+  { num: 20,  suffix: '+', label: 'Bitgan loyihalar' },
+  { num: 12,  suffix: '+', label: 'Mamnun mijozlar' },
+  { num: 100, suffix: '%', label: 'Qoniqish darajasi' },
+];
+
 export default function Stats() {
-  const { t } = useLanguage();
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    getDoc(doc(db, 'portfolio', 'about')).then((snap) => {
+      if (!snap.exists()) return;
+      const d = snap.data();
+      setStats([
+        { ...parseStatValue(d.stat1Value), label: d.stat1Label || 'Yillik tajriba' },
+        { ...parseStatValue(d.stat2Value), label: d.stat2Label || 'Bitgan loyihalar' },
+        { ...parseStatValue(d.stat3Value), label: d.stat3Label || 'Mamnun mijozlar' },
+        { ...parseStatValue(d.stat4Value), label: d.stat4Label || 'Qoniqish darajasi' },
+      ]);
+    }).catch(() => {});
+  }, []);
+
+  const items = stats || FALLBACK;
+
   return (
     <section className="stats-section">
       <div className="container">
         <div className="stats-grid">
-          {STATS.map((s, i) => (
+          {items.map((s, i) => (
             <StatItem
-              key={s.key}
-              value={s.value}
+              key={i}
+              num={s.num}
               suffix={s.suffix}
-              label={t(`about.stats.${s.key}`)}
+              label={s.label}
               delay={i * 120}
             />
           ))}
